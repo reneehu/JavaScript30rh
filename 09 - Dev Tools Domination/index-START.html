@@ -20,7 +20,10 @@
     // Regular
 
     // Interpolated
-
+    console.log('Hello my pup is a %s string', '👸');
+      // in ES6 backtick
+      const princess = '👸';
+      console.log(`Hello my pup is a ${princess}`);
     // Styled
 
     // warning!
@@ -30,16 +33,33 @@
     // Info
 
     // Testing
+    // const p = document.querySelector('p');
+    // console.assert(p.classList.contains('ouch'), 'That is wrong!');
 
     // clearing
 
     // Viewing DOM Elements
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
 
     // timing
+    console.log('🚀🚀 fecthing now');
+    fetch('https://api.github.com/users/reneehu')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+    });
+
 
   </script>
 </body>
