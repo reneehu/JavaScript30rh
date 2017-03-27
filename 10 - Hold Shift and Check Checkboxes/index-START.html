@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Document✅</title>
 </head>
 <body>
   <style>
 
     html {
       font-family: sans-serif;
-      background:#ffc600;
+      /*  background:#ffc600;*/
     }
 
     .inbox {
@@ -63,47 +63,69 @@
 
    When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
 
-  -->
-  <div class="inbox">
-    <div class="item">
-      <input type="checkbox">
-      <p>This is an inbox layout.</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Check one item</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Hold down your Shift key</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Check a lower item</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Everything inbetween should also be set to checked</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Try do it with out any libraries</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Just regular JavaScript</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Good Luck!</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Don't forget to tweet your result!</p>
-    </div>
+ -->
+ <div class="inbox">
+  <div class="item">
+    <input type="checkbox">
+    <p>This is an inbox layout.</p>
   </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check one item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Hold down your Shift key</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check a lower item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Everything inbetween should also be set to checked</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Try do it with out any libraries</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Just regular JavaScript</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Good Luck!</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Don't forget to tweet your result!</p>
+  </div>
+</div>
 
 <script>
+
+  const checkboxes = document.querySelectorAll('input[type = "checkbox"]');
+
+  let lastCheck;
+
+  function hanleCheck(e) {
+    let betweenFlag = false;
+    if (e.shiftKey && this.checked){
+      checkboxes.forEach(checkbox => {
+
+        if(checkbox == this || checkbox == lastCheck) betweenFlag = !betweenFlag;
+
+        if(betweenFlag) checkbox.checked = true;
+
+      });
+    }
+    lastCheck = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', hanleCheck));
+
+
 </script>
 </body>
 </html>
