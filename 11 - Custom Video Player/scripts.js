@@ -30,14 +30,33 @@ function rangeControl() {
 	video[this.name] = this.value;
 }
 
+function progressControl() {
+	const currentProgress = (video.currentTime / video.duration) * 100;
+	progressBar.style.flexBasis = `${currentProgress}%`;
+}
+
+function scrub(e) {
+	const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+	video.currentTime = scrubTime;
+}
+
 
 //hook up 💑💑💑
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+video.addEventListener('timeupdate', progressControl);
 
 toggle.addEventListener('click', togglePlay);
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 ranges.forEach(range => range.addEventListener('change', rangeControl));
 ranges.forEach(range => range.addEventListener('mousemove', rangeControl));
+
+
+let scrubClear = false;
+progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', (e) => scrubClear && scrub(e));
+progress.addEventListener('mousedown', () => scrubClear = true);
+progress.addEventListener('mouseup', () => scrubClear = false);
+
