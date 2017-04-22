@@ -7,6 +7,19 @@
 </head>
 <body>
 <script>
+const eventKeys = [];
+const magicWord = 'unicorn';
+window.addEventListener('keyup', e => {
+	console.log(e.key);
+	eventKeys.push(e.key);
+	eventKeys.splice( -magicWord.length - 1, eventKeys.length - magicWord.length);
+	console.log(eventKeys);
+	if (eventKeys.join('').includes(magicWord)){
+		console.log('🌈🌈🌈🎠🎠🎠');
+		cornify_add();
+	}
+
+})
 </script>
 </body>
 </html>
