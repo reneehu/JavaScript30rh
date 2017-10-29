@@ -64,6 +64,10 @@ h1 {
   transition:all 0.4s;
 }
 
+.mole:hover {
+  cursor: hand;
+}
+
 .hole.up .mole {
   top:0;
 }
