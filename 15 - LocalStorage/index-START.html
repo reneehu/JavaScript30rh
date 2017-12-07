@@ -71,6 +71,29 @@
   populateList(items, itemsList);
 
 
+
+  class car{
+    constructor(make, year){
+      this._makeha = make;
+      this._yearha = year;
+    }
+
+    get make(){
+      return this._makeha;
+    }
+
+    get year(){
+      return this._yearha;
+    }
+
+    toString(){
+      return `${this.make} ${this.year}`;
+    }
+  }
+
+  var myCar = new car('porsche', 2013);
+
+
 </script>
 
 
