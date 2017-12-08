@@ -25,6 +25,8 @@
           .map(result => result.transcript)
           .join('');
 
+    console.log(e.results);
+
     p.textContent = transcript;
     if (e.results[0].isFinal) {
      p = document.createElement('p');
